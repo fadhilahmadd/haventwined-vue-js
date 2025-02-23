@@ -101,7 +101,7 @@ export default {
     methods: {
         async fetchEvents() {
             try {
-                const response = await axios.get('/api/events')
+                const response = await axios.get('/api/list-events')
                 const allEvents = response.data.data
 
                 // Get popular events (sorted by attendees)
