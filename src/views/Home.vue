@@ -63,14 +63,7 @@
                     Coba event pilihan yang cocok untuk kamu.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- You can reuse EventCard or create a new one for recommended events -->
-                    <EventCard v-for="(event, index) in popularEvents" :key="'reco-' + index" :event="event" />
-                </div>
-                <div class="text-center mt-8">
-                    <button
-                        class="inline-block bg-blue-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-blue-700 transition-colors">
-                        Tampilkan Lebih Banyak Event
-                    </button>
+                    <EventCard v-for="event in recommendedEvents" :key="event.id" :event="event" />
                 </div>
             </section>
         </div>
@@ -121,7 +114,9 @@ export default {
                 // Get recommended events (mix of popular and closing)
                 this.recommendedEvents = [...this.popularEvents, ...this.closingEvents]
                     .sort(() => 0.5 - Math.random())
-                    .slice(0, 3)
+                    .filter((event, index, self) =>
+                        self.findIndex(e => e.id === event.id) === index
+                    )
 
             } catch (error) {
                 console.error('Error fetching events:', error)
