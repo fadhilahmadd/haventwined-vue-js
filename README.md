@@ -6,9 +6,11 @@ This template should help get you started developing with Vue 3 in Vite.
 http://34.28.234.120:5173/
 
 Auth:
+```sh
     Email: admin@test.com
     Password: admin123
-
+```
+    
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
